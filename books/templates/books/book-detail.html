@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ book.title }}
+{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="{% url 'books:books'%}">Books</a></li>
+<li class="breadcrumb-item active" aria-current="page">{{ book.title }}</li>
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <a class="card-link" data-toggle="collapse" href="#options">
+                        Options
+                    </a>
+                </div>
+                <div id="options" class="collapse show">
+                    <div class="card-body bg-light">
+                        <a class="btn btn-primary" href="{% url 'books:book-delete' book.id %}">Delete</a>
+                        <a class="btn btn-primary" href="{% url 'books:book-edit' book.id %}">Edit</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Row -->
+    <div class="row">
+
+        <!-- Book Details Short -->
+        <div class="col-12 col-md-6 col-lg-5 col-xl-4 mt-3">
+
+            <!-- Card -->
+            <div class="card">
+                <div class="card-header">
+                    <a class="card-link" data-toggle="collapse" href="#bookDetailsShort">
+                        Short Details
+                    </a>
+                </div>
+                <div id="bookDetailsShort" class="collapse show">
+                    <div class="card-body bg-light">
+                        <ul class="list-group">
+                            <li class="list-group-item">Title: <span class="font-weight-bold">{{ book.title }}</span></li>
+                            <li class="list-group-item">Author: <a href="{% url 'books:books-author' book.author_slug %}"><span class="font-weight-bold">{{ book.author }}</span></a></li>
+                            <li class="list-group-item">Genre: <span class="font-weight-bold">{{ book.genre }}</span></li>
+                            <li class="list-group-item">Year of Publication: <span class="font-weight-bold">{{ book.pub_year }}</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div> <!-- Card -->
+
+        </div> <!-- Book Details Short -->
+
+        <!-- Book Details Long -->
+        <div class="col-12 col-md-6 col-lg-7 col-xl-8 mt-3">
+
+            <!-- Card -->
+            <div class="card">
+                <div class="card-header">
+                    <a class="card-link" data-toggle="collapse" href="#bookDetailsLong">
+                        Long Details
+                    </a>
+                </div>
+                <div id="bookDetailsLong" class="collapse show">
+                    <div class="card-body bg-light">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <strong>Summary: </strong>{{ book.summary }}
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Characters: </strong>{{ book.characters }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div> <!-- Card -->
+
+        </div> <!-- Book Details Long -->
+
+    </div> <!-- Row -->
+</div> <!-- Container-Fluid -->
+{% endblock %}

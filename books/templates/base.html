@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <nav class="navbar navbar-expand-sm bg-light border border-top-0">
+                    <a class="navbar-brand" href="{% url 'books:books' %}">
+                        Books
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse">
+                        <span class="text-primary">☰</span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="collapse">
+                        <ul class="navbar-nav float-right">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'books:books' %}">Home</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="#">About</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="#">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb border bg-light">
+                        {% block breadcrumb %}
+                        {% endblock %}
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+{% block body %}
+{% endblock %}
+</body>
+</html>

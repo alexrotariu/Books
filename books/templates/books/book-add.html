@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Book Add
+{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="{% url 'books:books'%}">Books</a></li>
+<li class="breadcrumb-item active" aria-current="page">Add</li>
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <br>
+
+    <form method="POST" class="form-horizontal" role="form">
+    {% csrf_token %}
+
+        <div class="row">
+            <div class="col">
+                {% if form.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show">
+                        {{ form.errors }}
+                        <a class="close" data-dismiss="alert">&times;</a>
+                    </div><br>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <a class="card-link" data-toggle="collapse" href="#options">
+                            Options
+                        </a>
+                    </div>
+                    <div id="options" class="collapse show">
+                        <div class="card-body bg-light">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">
+                                    ✔ Save
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row -->
+        <div class="row">
+
+            <!-- Book Details Short -->
+            <div class="col-12 col-md-6 col-lg-5 col-xl-4 mt-3">
+
+                <!-- Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <a class="card-link" data-toggle="collapse" href="#bookFormShort">
+                            Add Book Short
+                        </a>
+                    </div>
+                    <div id="bookFormShort" class="collapse show">
+                        <div class="card-body bg-light">
+                    <!--==================================  Title  ==================================-->
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="{{form.title.id_for_label}}">Title</label>
+                                    </div>
+                                    {{ form.title }}
+                                </div>
+                            </div>
+                    <!--==================================  Author  ==================================-->
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="{{form.author.id_for_label}}">Author</label>
+                                    </div>
+                                    {{ form.author }}
+                                </div>
+                            </div>
+                    <!--==================================  Genre  ==================================-->
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="{{form.genre.id_for_label}}">Genre</label>
+                                    </div>
+                                    {{ form.genre }}
+                                </div>
+                            </div>
+                    <!--==================================  Year of Publication  ==================================-->
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="{{form.pub_year.id_for_label}}">Year of Publication</label>
+                                    </div>
+                                    {{ form.pub_year }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- Card -->
+
+            </div> <!-- Book Details Short -->
+
+            <!-- Book Details Long -->
+            <div class="col-12 col-md-6 col-lg-7 col-xl-8 mt-3">
+                <!-- Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <a class="card-link" data-toggle="collapse" href="#bookFormLong">
+                            Add Book Long
+                        </a>
+                    </div>
+                    <div id="bookFormLong" class="collapse show">
+                        <div class="card-body bg-light">
+                        <!--==================================  Title  ==================================-->
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="{{form.summary.id_for_label}}">Summary</label>
+                                    </div>
+                                    {{ form.summary }}
+                                </div>
+                            </div>
+                        <!--==================================  Author  ==================================-->
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="{{form.characters.id_for_label}}">Characters</label>
+                                    </div>
+                                    {{ form.characters }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- Card -->
+            </div> <!-- Book Details Long -->
+
+        </div>
+
+    </form>
+
+    </div> <!-- Row -->
+</div> <!-- Container-Fluid -->
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Book Delete Confirmation
+{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="{% url 'books:books'%}">Books</a></li>
+<li class="breadcrumb-item"><a href="{% url 'books:book' book.id %}">{{ book.title }}</a></li>
+<li class="breadcrumb-item active" aria-current="page">Delete</li>
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <br>
+    <div class="row">
+        <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+            <div class="card">
+                <div class="card-header">
+                    <a class="card-link" data-toggle="collapse" href="#bookDelete">
+                        Are you sure?
+                    </a>
+                </div>
+                <div id="bookDelete" class="collapse show">
+                    <div class="card-body bg-light">
+                        <form action="{{ request.path }}" method="post">
+                            {% csrf_token %}
+                            <p>Do you really want to delete <a href="{% url 'books:book' book.id %}"><strong><i>{{ book.title }}</i></strong></a>?</p>
+                            <button type="submit" class="btn btn-primary">Delete</button>
+                            <a class="btn btn-primary" href="{% url 'books:book' book.id %}"><strong>↶</strong> No, take me back</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
